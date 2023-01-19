@@ -1,0 +1,61 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: unless-stopped
+    build: requirements/nginx
+    env_file: .env
+    networks:
+      - inception
+    depends_on:
+      - mariadb
+    ports:
+      - 443:443
+    volumes:
+      - www:/var/www/html/
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: unless-stopped
+    build: requirements/mariadb
+    env_file: .env
+    networks:
+      - inception
+    ports:
+      - 3306:3306
+    volumes:
+      - database:/var/lib/mysql
+
+  wrodpress:
+    image: wrodpress
+    container_name: wrodpress
+    restart: unless-stopped
+    build: requirements/wrodpress
+    env_file: .env
+    networks:
+      - inception
+    depends_on:
+      - mariadb
+    volumes:
+      - www:/var/www/html/
+
+volumes:
+  www:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${VOLUME_WWW}
+      o: bind
+  database:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${VOLUME_DB}
+      o: bind
+
+networks:
+  inception:
+      name: inception
+      driver: bridge

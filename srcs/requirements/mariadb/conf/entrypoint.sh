@@ -1,6 +1,6 @@
 #!/usr/bin/
 
-mkdir -p /home/thamon/data/db
+mkdir -p /home/thamon/data/database
 mkdir -p /home/thamon/data/www
 
 /usr/bin/mysql_install_db --user=root --basedir=/user --datadir=/var/lib/mysql

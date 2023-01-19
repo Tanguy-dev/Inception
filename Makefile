@@ -18,6 +18,10 @@ build:
 	@docker compose ${FLAGS} up -d --build
 	@echo ${GREEN}"ready :"${WHITE}" - docker service are up"${END}
 
+down:
+	@docker compose ${FLAGS} down -v
+	@echo ${GREEN}"ready :"${WHITE}" - docker service are up"${END}
+
 start:
 	@docker compose ${FLAGS} start > /dev/null
 	@echo ${GREEN}"ready :"${WHITE}" - docker service have been started"${END}
@@ -31,7 +35,7 @@ status:
 
 clean:
 	@rm -rf /home/thamon/data/www/* > /dev/null
-	@rm -rf /home/thamon/data/db/* > /dev/null
+	@rm -rf /home/thamon/data/database/* > /dev/null
 	@echo ${GREEN}"- clean docker data"
 
 fclean: clean
@@ -43,10 +47,12 @@ fclean: clean
 	@docker rm -f mariadb > /dev/null
 	@docker rm -f wordpress > /dev/null
 	@echo ${GREEN}"- clean docker containers"${END}
-	@docker volume rm -f inception_db > /dev/null
+	@docker volume rm -f inception_database > /dev/null
 	@docker volume rm -f inception_www > /dev/null
 	@echo ${GREEN}"- clean docker volumes"${END}
 	@docker network rm inception > /dev/null
 	@echo ${GREEN}"- clean docker network"${END}
 
-.PHONY:                 all clean fclean re stack map vector
+re: stop fclean all
+
+.PHONY:                 all clean fclean re build start stop

@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.15
 
 RUN apk update
 RUN apk upgrade
@@ -6,11 +6,11 @@ RUN apk upgrade
 #-----------------NGINX------------------------#
 
 RUN apk add mariadb
-RUN apk add mariadb-commun
+RUN apk add mariadb-common
 RUN apk add mariadb-client
 RUN apk add mariadb-server-utils
 
-RUN rm-rf	/etc/mysql/my.cnf \
+RUN rm -rf	/etc/mysql/my.cnf \
 			/etc/my.cnf \
 			~/my.cnf
 

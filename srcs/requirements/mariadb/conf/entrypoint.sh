@@ -1,9 +1,9 @@
-#!/usr/bin/
+#!/bin/sh
 
 mkdir -p /home/thamon/data/database
 mkdir -p /home/thamon/data/www
 
-/usr/bin/mysql_install_db --user=root --basedir=/user --datadir=/var/lib/mysql
+/usr/bin/mysql_install_db --user=root --basedir=/usr --datadir=/var/lib/mysql
 /usr/bin/mysqld --user=root --datadir=/var/lib/mysql & sleep 2
 
 mysql -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_NAME}\`;"

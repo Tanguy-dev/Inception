@@ -22,6 +22,8 @@ cp                  ./wp-config.php /var/www/html/wp-config.php
                     --admin_email=${WORDPRESS_ADMIN_EMAIL} \
                     --skip-email
 
+/usr/local/bin/wp   config create --dbname=$MYSQL_NAME --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=$MYSQL_HOST --dbcharset=$MYSQL_CHARSET --dbcollate=$MYSQL_COLLATE --allow-root
+
 /usr/local/bin/wp   user create \
                     --allow-root \
                     --path="/var/www/html" \

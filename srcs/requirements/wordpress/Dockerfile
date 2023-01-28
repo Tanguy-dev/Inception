@@ -48,7 +48,7 @@ RUN		chown					-R www-data:www-data /var/www/html
 COPY	./conf/wp-config.php	./
 COPY	./conf/entrypoint.sh	./
 RUN chmod +x					./entrypoint.sh
-ENTRYPOINT						["./entrypoint.sh"]			
+ENTRYPOINT						["./entrypoint.sh"]	
 
 
 EXPOSE 9000

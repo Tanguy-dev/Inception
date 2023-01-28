@@ -10,6 +10,7 @@ RUN apk add nginx
 RUN mkdir -p /var/www/html/
 
 COPY conf/default.conf /etc/nginx/conf.d/default.conf
+COPY conf/default.conf /etc/nginx/http.d/default.conf
 
 #----------------OPENSSL-----------------------------#
 
@@ -32,4 +33,4 @@ RUN rc-update add nginx default
 
 EXPOSE 443
 
-CMD	["nginx", "-g", "deamon off;"]
+CMD	["nginx", "-g", "daemon off;"]

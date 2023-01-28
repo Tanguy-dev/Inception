@@ -1,7 +1,7 @@
 NAME            :=		inception
 VERSION			:=		1.0	
 
-SRCS			:=		srcs/
+SRCS			:=		srcs
 COMPOSE_FILE	:=		${SRCS}/docker-compose.yml
 ENV				:=		${SRCS}/.env
 FLAGS			:=		-f ${COMPOSE_FILE} \

@@ -36,8 +36,8 @@ status:
 	@docker compose ${FLAGS} ps
 
 clean:
-	@rm -rf /home/thamon/data/www/* > /dev/null
-	@rm -rf /home/thamon/data/database/* > /dev/null
+	@sudo rm -rf /home/thamon/data/www/* > /dev/null
+	@sudo rm -rf /home/thamon/data/database/* > /dev/null
 	@echo ${GREEN}"- clean docker data"
 
 fclean: clean

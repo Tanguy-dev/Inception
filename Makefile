@@ -15,6 +15,8 @@ END				:=		"\033[0;0m"
 all: build
 
 build:
+	@mkdir -p /home/thamon/data/database
+	@mkdir -p /home/thamon/data/www
 	@docker compose ${FLAGS} up -d --build
 	@echo ${GREEN}"ready :"${WHITE}" - docker service are up"${END}
 

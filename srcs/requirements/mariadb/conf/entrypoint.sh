@@ -1,5 +1,8 @@
 #!/bin/sh
 
+mkdir -p /home/thamon/data/database
+mkdir -p /home/thamon/data/www
+
 if [ ! -d "/run/mysqld" ]; then
 	mkdir -p /run/mysqld
 	chown -R mysql:mysql /run/mysqld
